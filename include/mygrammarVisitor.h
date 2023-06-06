@@ -2,7 +2,6 @@
 // Generated from mygrammar.g4 by ANTLR 4.13.0
 
 #pragma once
-
 #include "antlr4-runtime.h"
 #include "mygrammarParser.h"
 
