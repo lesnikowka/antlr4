@@ -1,19 +1,35 @@
 grammar mygrammar;
 
-INT:[0123456789]+;
+INT: [0-9]+;
+VAR: [a-z]+;
+DOT : '.';
 
-MUL:'*';
-DIV:'/';
+IS:'=';
 
-SUB:'-';
-ADD:'+';
+SUB: '-';
 
-SEP:';';
-LBR:'(';
-RBR:')';
-WS:[ \t\n\r]+ ->skip;
+ADD: '+';
+DIV: '/';
+MUL: '*';
 
+SEP: ';';
 
-expr:expr(MUL|DIV)expr | expr(ADD|SUB)expr| LBR expr RBR | INT;
-row:expr SEP;
-prog:row|prog row EOF?;
+LBR: '(';
+RBR: ')';
+
+float: INT #int
+|INT DOT INT #intDOTint
+;
+WS: [ \t\r\n]->skip;
+
+expr: expr (MUL|DIV) expr # exprMULexpr
+|VAR IS expr #varISexpr
+| expr (ADD|SUB) expr # exprADDexpr
+| LBR expr RBR # LexprR
+| float # efloat
+;
+row: expr SEP # expr_sep
+;
+prog: row EOF? # oneLineProg
+| prog row EOF? # prog_row
+;

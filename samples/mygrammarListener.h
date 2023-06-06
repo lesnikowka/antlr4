@@ -1,5 +1,5 @@
 
-// Generated from mygrammar.g4 by ANTLR 4.12.0
+// Generated from mygrammar.g4 by ANTLR 4.13.0
 
 #pragma once
 
@@ -14,14 +14,35 @@
 class  mygrammarListener : public antlr4::tree::ParseTreeListener {
 public:
 
-  virtual void enterExpr(mygrammarParser::ExprContext *ctx) = 0;
-  virtual void exitExpr(mygrammarParser::ExprContext *ctx) = 0;
+  virtual void enterInt(mygrammarParser::IntContext *ctx) = 0;
+  virtual void exitInt(mygrammarParser::IntContext *ctx) = 0;
 
-  virtual void enterRow(mygrammarParser::RowContext *ctx) = 0;
-  virtual void exitRow(mygrammarParser::RowContext *ctx) = 0;
+  virtual void enterIntDOTint(mygrammarParser::IntDOTintContext *ctx) = 0;
+  virtual void exitIntDOTint(mygrammarParser::IntDOTintContext *ctx) = 0;
 
-  virtual void enterProg(mygrammarParser::ProgContext *ctx) = 0;
-  virtual void exitProg(mygrammarParser::ProgContext *ctx) = 0;
+  virtual void enterVarISexpr(mygrammarParser::VarISexprContext *ctx) = 0;
+  virtual void exitVarISexpr(mygrammarParser::VarISexprContext *ctx) = 0;
+
+  virtual void enterLexprR(mygrammarParser::LexprRContext *ctx) = 0;
+  virtual void exitLexprR(mygrammarParser::LexprRContext *ctx) = 0;
+
+  virtual void enterExprADDexpr(mygrammarParser::ExprADDexprContext *ctx) = 0;
+  virtual void exitExprADDexpr(mygrammarParser::ExprADDexprContext *ctx) = 0;
+
+  virtual void enterExprMULexpr(mygrammarParser::ExprMULexprContext *ctx) = 0;
+  virtual void exitExprMULexpr(mygrammarParser::ExprMULexprContext *ctx) = 0;
+
+  virtual void enterEfloat(mygrammarParser::EfloatContext *ctx) = 0;
+  virtual void exitEfloat(mygrammarParser::EfloatContext *ctx) = 0;
+
+  virtual void enterExpr_sep(mygrammarParser::Expr_sepContext *ctx) = 0;
+  virtual void exitExpr_sep(mygrammarParser::Expr_sepContext *ctx) = 0;
+
+  virtual void enterProg_row(mygrammarParser::Prog_rowContext *ctx) = 0;
+  virtual void exitProg_row(mygrammarParser::Prog_rowContext *ctx) = 0;
+
+  virtual void enterOneLineProg(mygrammarParser::OneLineProgContext *ctx) = 0;
+  virtual void exitOneLineProg(mygrammarParser::OneLineProgContext *ctx) = 0;
 
 
 };
