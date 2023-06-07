@@ -111,13 +111,13 @@ class  myVisitor : public mygrammarVisitor {
     std::any visitOneLineProg(mygrammarParser::OneLineProgContext* context) {
         double result = std::any_cast<double>(visit(context->row()));
 
-        std::cout << context->row()->getText().c_str();
-
         std::cout << "visit LineProg" << std::endl;
         return 0;
     };
 
 public:
     std::vector<double> data;
+
+    std::unordered_map<std::string, double> variables;
 
 };

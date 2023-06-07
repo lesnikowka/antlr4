@@ -13,7 +13,7 @@ SET(MYCOMPILE_FLAGS "-MT")
 file(GLOB srcs "*.cpp*")
 file(GLOB hdrs "*.h*")
 
-set_source_files_properties(${srcs} PROPERTIES COMPILE_FLAGS  "/MTd")
+#set_source_files_properties(${srcs} PROPERTIES COMPILE_FLAGS  "/LDd")
 
 add_executable(include ${srcs} ${hdrs})
 
