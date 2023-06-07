@@ -2,6 +2,8 @@
 // Generated from mygrammar.g4 by ANTLR 4.13.0
 
 #pragma once
+
+
 #include "antlr4-runtime.h"
 #include "mygrammarParser.h"
 
@@ -25,9 +27,13 @@ public:
 
     virtual std::any visitLexprR(mygrammarParser::LexprRContext *context) = 0;
 
+    virtual std::any visitPrint_expr(mygrammarParser::Print_exprContext *context) = 0;
+
     virtual std::any visitExprADDexpr(mygrammarParser::ExprADDexprContext *context) = 0;
 
     virtual std::any visitExprMULexpr(mygrammarParser::ExprMULexprContext *context) = 0;
+
+    virtual std::any visitEvar(mygrammarParser::EvarContext *context) = 0;
 
     virtual std::any visitEfloat(mygrammarParser::EfloatContext *context) = 0;
 

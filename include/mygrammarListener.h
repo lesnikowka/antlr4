@@ -26,11 +26,17 @@ public:
   virtual void enterLexprR(mygrammarParser::LexprRContext *ctx) = 0;
   virtual void exitLexprR(mygrammarParser::LexprRContext *ctx) = 0;
 
+  virtual void enterPrint_expr(mygrammarParser::Print_exprContext *ctx) = 0;
+  virtual void exitPrint_expr(mygrammarParser::Print_exprContext *ctx) = 0;
+
   virtual void enterExprADDexpr(mygrammarParser::ExprADDexprContext *ctx) = 0;
   virtual void exitExprADDexpr(mygrammarParser::ExprADDexprContext *ctx) = 0;
 
   virtual void enterExprMULexpr(mygrammarParser::ExprMULexprContext *ctx) = 0;
   virtual void exitExprMULexpr(mygrammarParser::ExprMULexprContext *ctx) = 0;
+
+  virtual void enterEvar(mygrammarParser::EvarContext *ctx) = 0;
+  virtual void exitEvar(mygrammarParser::EvarContext *ctx) = 0;
 
   virtual void enterEfloat(mygrammarParser::EfloatContext *ctx) = 0;
   virtual void exitEfloat(mygrammarParser::EfloatContext *ctx) = 0;

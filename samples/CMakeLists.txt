@@ -8,3 +8,5 @@ include_directories(include ../3rdparty/antlr4/runtime/Cpp/build/bin/bin ../3rdp
 
 
 target_include_directories(samples PUBLIC ../include)
+
+target_include_directories(samples PUBLIC ../3rdparty/antlr4/runtime/Cpp/runtime/src)

@@ -13,7 +13,7 @@ class  mygrammarParser : public antlr4::Parser {
 public:
   enum {
     INT = 1, VAR = 2, DOT = 3, IS = 4, SUB = 5, ADD = 6, DIV = 7, MUL = 8, 
-    SEP = 9, LBR = 10, RBR = 11, WS = 12
+    SEP = 9, LBR = 10, RBR = 11, WS = 12, PRINT = 13
   };
 
   enum {
@@ -120,6 +120,18 @@ public:
     virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
+  class  Print_exprContext : public ExprContext {
+  public:
+    Print_exprContext(ExprContext *ctx);
+
+    antlr4::tree::TerminalNode *PRINT();
+    ExprContext *expr();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
   class  ExprADDexprContext : public ExprContext {
   public:
     ExprADDexprContext(ExprContext *ctx);
@@ -142,6 +154,17 @@ public:
     ExprContext* expr(size_t i);
     antlr4::tree::TerminalNode *MUL();
     antlr4::tree::TerminalNode *DIV();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  EvarContext : public ExprContext {
+  public:
+    EvarContext(ExprContext *ctx);
+
+    antlr4::tree::TerminalNode *VAR();
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 

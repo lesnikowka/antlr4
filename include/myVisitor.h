@@ -4,64 +4,87 @@
 #include "mygrammarVisitor.h"
 
 class  myVisitor : public mygrammarVisitor {
-     std::any visitInt(mygrammarParser::IntContext* context) {
-        std::cout << "Visit INT" << std::endl;
-        int first = std::stoi(context->INT()->getText());
-        return first;
+    std::any visitInt(mygrammarParser::IntContext* context) {
+        std::cout << "visit Int" << std::endl;
 
+        int result;
+
+        result = std::stoi(context->INT()->getText());
+
+        return result;
     };
 
-     std::any visitIntDOTint(mygrammarParser::IntDOTintContext* context) {
-        std::cout << "Visit intDOTint" << std::endl;
+    std::any visitIntDOTint(mygrammarParser::IntDOTintContext* context) {
+        std::cout << "visit IntDotInt" << std::endl;
+
+        int left = std::any_cast<int>(visit(context->INT(0)));
+        int right = std::any_cast<int>(visit(context->INT(1)));
+
+        std::string double_str = std::to_string(left) + "." + std::to_string(right);
+
+        double result = std::stod(double_str);
+
+        return result;
+    };
+
+    std::any visitVarISexpr(mygrammarParser::VarISexprContext* context) {
+        std::cout << "visit ISexpr" << std::endl;
         return 0;
     };
 
-     std::any visitVarISexpr(mygrammarParser::VarISexprContext* context) {
-         std::cout << "Visit varISexpr" << std::endl;
-         return 0;
+    std::any visitLexprR(mygrammarParser::LexprRContext* context) {
+        std::cout << "visit LexprR" << std::endl;
+        double result;
 
-     };
+        result = std::any_cast<double>(context->expr());
 
-     std::any visitLexprR(mygrammarParser::LexprRContext* context) {
-         std::cout << "Visit LexprR" << std::endl;
-         return 0;
-     };
-
-     std::any visitExprADDexpr(mygrammarParser::ExprADDexprContext* context) {
-         std::cout << "Visit exprADDexpr" << std::endl;
-         return 0;
-
-     };
-
-     std::any visitExprMULexpr(mygrammarParser::ExprMULexprContext* context) {
-        std::cout << "Visit exprMULexpr" << std::endl;
-        return 0;
-
+        return result;
     };
 
-     std::any visitEfloat(mygrammarParser::EfloatContext* context) {
-         std::cout << "Visit float" << std::endl;
-         return 0;
+    std::any visitPrint_expr(mygrammarParser::Print_exprContext* context) {
+        std::cout << "visit print_expr" << std::endl;
+        return 0;
+    };
 
-     };
+    std::any visitExprADDexpr(mygrammarParser::ExprADDexprContext* context) {
+        std::cout << "visit ExprAddExpr" << std::endl;
+        return 0;
+    };
 
-     std::any visitExpr_sep(mygrammarParser::Expr_sepContext* context) {
-         std::cout << "visit expr_sep" << std::endl;
-         return 0;
+    std::any visitExprMULexpr(mygrammarParser::ExprMULexprContext* context) {
+        std::cout << "visit ExprMULexpr" << std::endl;
+        return 0;
+    };
 
-     };
+    std::any visitEvar(mygrammarParser::EvarContext* context) {
+        std::cout << "visit Evar" << std::endl;
+        return 0;
+    };
 
-     std::any visitProg_row(mygrammarParser::Prog_rowContext* context) {
-         std::cout << "Visit prog_row" << std::endl;
-         return 0;
+    std::any visitEfloat(mygrammarParser::EfloatContext* context) {
+        std::cout << "visit Efloat" << std::endl;
+        return 0;
+    };
 
-     };
+    std::any visitExpr_sep(mygrammarParser::Expr_sepContext* context) {
+        std::cout << "visit Expr_sep" << std::endl;
+        return visit(context->expr());
+    };
 
-     std::any visitOneLineProg(mygrammarParser::OneLineProgContext* context) {
-         std::cout << "visit oneLineProg" << std::endl;
-         return 0;
+    std::any visitProg_row(mygrammarParser::Prog_rowContext* context) {
 
-     };
+        std::cout << "visit Prog_row" << std::endl;
+        return 0;
+    };
+
+    std::any visitOneLineProg(mygrammarParser::OneLineProgContext* context) {
+        double result = std::any_cast<double>(visit(context->row()));
+
+        std::cout << context->row()->getText();
+
+        std::cout << "visit LineProg" << std::endl;
+        return 0;
+    };
 
 public:
     std::vector<double> data;

@@ -31,11 +31,19 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitPrint_expr(mygrammarParser::Print_exprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitExprADDexpr(mygrammarParser::ExprADDexprContext *ctx) override {
     return visitChildren(ctx);
   }
 
   virtual std::any visitExprMULexpr(mygrammarParser::ExprMULexprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitEvar(mygrammarParser::EvarContext *ctx) override {
     return visitChildren(ctx);
   }
 

@@ -28,11 +28,17 @@ public:
   virtual void enterLexprR(mygrammarParser::LexprRContext * /*ctx*/) override { }
   virtual void exitLexprR(mygrammarParser::LexprRContext * /*ctx*/) override { }
 
+  virtual void enterPrint_expr(mygrammarParser::Print_exprContext * /*ctx*/) override { }
+  virtual void exitPrint_expr(mygrammarParser::Print_exprContext * /*ctx*/) override { }
+
   virtual void enterExprADDexpr(mygrammarParser::ExprADDexprContext * /*ctx*/) override { }
   virtual void exitExprADDexpr(mygrammarParser::ExprADDexprContext * /*ctx*/) override { }
 
   virtual void enterExprMULexpr(mygrammarParser::ExprMULexprContext * /*ctx*/) override { }
   virtual void exitExprMULexpr(mygrammarParser::ExprMULexprContext * /*ctx*/) override { }
+
+  virtual void enterEvar(mygrammarParser::EvarContext * /*ctx*/) override { }
+  virtual void exitEvar(mygrammarParser::EvarContext * /*ctx*/) override { }
 
   virtual void enterEfloat(mygrammarParser::EfloatContext * /*ctx*/) override { }
   virtual void exitEfloat(mygrammarParser::EfloatContext * /*ctx*/) override { }

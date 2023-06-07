@@ -13,7 +13,7 @@ class  mygrammarLexer : public antlr4::Lexer {
 public:
   enum {
     INT = 1, VAR = 2, DOT = 3, IS = 4, SUB = 5, ADD = 6, DIV = 7, MUL = 8, 
-    SEP = 9, LBR = 10, RBR = 11, WS = 12
+    SEP = 9, LBR = 10, RBR = 11, WS = 12, PRINT = 13
   };
 
   explicit mygrammarLexer(antlr4::CharStream *input);
