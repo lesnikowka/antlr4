@@ -7,9 +7,11 @@ class  myVisitor : public mygrammarVisitor {
     std::any visitInt(mygrammarParser::IntContext* context) {
         std::cout << "visit Int" << std::endl;
 
-        int result;
+        int result = 0;
 
-        result = std::stoi(context->INT()->getText());
+        std::string s = context->INT()->getText().c_str();
+
+        result = std::stoi(s);
 
         return result;
     };
@@ -48,7 +50,11 @@ class  myVisitor : public mygrammarVisitor {
 
     std::any visitExprADDexpr(mygrammarParser::ExprADDexprContext* context) {
         std::cout << "visit ExprAddExpr" << std::endl;
-        return 0;
+
+        double left = std::any_cast<double>(visit(context->expr(0)));
+        double right = std::any_cast<double>(visit(context->expr(1)));
+
+        return (double)0;
     };
 
     std::any visitExprMULexpr(mygrammarParser::ExprMULexprContext* context) {
@@ -63,7 +69,10 @@ class  myVisitor : public mygrammarVisitor {
 
     std::any visitEfloat(mygrammarParser::EfloatContext* context) {
         std::cout << "visit Efloat" << std::endl;
-        return 0;
+        
+        visit(context->float_());
+
+        return (double)0;
     };
 
     std::any visitExpr_sep(mygrammarParser::Expr_sepContext* context) {
