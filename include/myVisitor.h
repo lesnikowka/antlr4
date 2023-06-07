@@ -45,6 +45,9 @@ class  myVisitor : public mygrammarVisitor {
 
     std::any visitPrint_expr(mygrammarParser::Print_exprContext* context) {
         std::cout << "visit print_expr" << std::endl;
+
+        std::cout << context->expr()->getText();
+
         return 0;
     };
 
@@ -54,12 +57,31 @@ class  myVisitor : public mygrammarVisitor {
         double left = std::any_cast<double>(visit(context->expr(0)));
         double right = std::any_cast<double>(visit(context->expr(1)));
 
-        return (double)0;
+        if (context->ADD()) {
+            return left + right;
+        }
+        else if (context->SUB()) {
+            std::cout << "-";
+        }
+
+        return left - right;
     };
 
     std::any visitExprMULexpr(mygrammarParser::ExprMULexprContext* context) {
         std::cout << "visit ExprMULexpr" << std::endl;
-        return 0;
+        
+        double left = std::any_cast<double>(visit(context->expr(0)));
+        double right = std::any_cast<double>(visit(context->expr(1)));
+
+        if (right == 0) {
+            throw std::invalid_argument("Zero division error");
+        }
+
+        if (context->MUL()) {
+            return left * right;
+        }
+
+        return left / right;
     };
 
     std::any visitEvar(mygrammarParser::EvarContext* context) {
@@ -89,7 +111,7 @@ class  myVisitor : public mygrammarVisitor {
     std::any visitOneLineProg(mygrammarParser::OneLineProgContext* context) {
         double result = std::any_cast<double>(visit(context->row()));
 
-        std::cout << context->row()->getText();
+        std::cout << context->row()->getText().c_str();
 
         std::cout << "visit LineProg" << std::endl;
         return 0;
