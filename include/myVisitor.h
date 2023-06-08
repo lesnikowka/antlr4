@@ -7,11 +7,11 @@ class  myVisitor : public mygrammarVisitor {
     std::any visitInt(mygrammarParser::IntContext* context) {
         std::cout << "visit Int" << std::endl;
 
-        int result = 0;
+        double result = 0;
 
-        std::string s = context->INT()->getText().c_str();
+        std::string s = context->INT()->getText();
 
-        result = std::stoi(s);
+        result = std::stod(s);
 
         return result;
     };
@@ -31,14 +31,19 @@ class  myVisitor : public mygrammarVisitor {
 
     std::any visitVarISexpr(mygrammarParser::VarISexprContext* context) {
         std::cout << "visit ISexpr" << std::endl;
-        return 0;
+
+        double value = std::any_cast<double>(visit(context->expr()));
+        std::string name = context->VAR()->getText();
+
+        variables.emplace(name, value);
+
+        return value;
     };
 
     std::any visitLexprR(mygrammarParser::LexprRContext* context) {
         std::cout << "visit LexprR" << std::endl;
-        double result;
 
-        result = std::any_cast<double>(context->expr());
+        double result = std::any_cast<double>(visit(context->expr()));
 
         return result;
     };
@@ -46,9 +51,13 @@ class  myVisitor : public mygrammarVisitor {
     std::any visitPrint_expr(mygrammarParser::Print_exprContext* context) {
         std::cout << "visit print_expr" << std::endl;
 
-        std::cout << context->expr()->getText();
+        std::string s = context->getText();
 
-        return 0;
+        double result = std::any_cast<double>(visit(context->expr()));
+
+        std::cout << result << std::endl;
+
+        return result;
     };
 
     std::any visitExprADDexpr(mygrammarParser::ExprADDexprContext* context) {
@@ -59,9 +68,6 @@ class  myVisitor : public mygrammarVisitor {
 
         if (context->ADD()) {
             return left + right;
-        }
-        else if (context->SUB()) {
-            std::cout << "-";
         }
 
         return left - right;
@@ -86,20 +92,26 @@ class  myVisitor : public mygrammarVisitor {
 
     std::any visitEvar(mygrammarParser::EvarContext* context) {
         std::cout << "visit Evar" << std::endl;
-        return 0;
+
+        double result = variables[context->VAR()->getText()];
+
+        return result;
     };
 
     std::any visitEfloat(mygrammarParser::EfloatContext* context) {
         std::cout << "visit Efloat" << std::endl;
         
-        visit(context->float_());
+        double result = std::any_cast<double>(visit(context->float_()));
 
-        return (double)0;
+        return result;
     };
 
     std::any visitExpr_sep(mygrammarParser::Expr_sepContext* context) {
         std::cout << "visit Expr_sep" << std::endl;
-        return visit(context->expr());
+
+        double result = std::any_cast<double>(visit(context->expr()));
+
+        return result;
     };
 
     std::any visitProg_row(mygrammarParser::Prog_rowContext* context) {
@@ -112,12 +124,10 @@ class  myVisitor : public mygrammarVisitor {
         double result = std::any_cast<double>(visit(context->row()));
 
         std::cout << "visit LineProg" << std::endl;
-        return 0;
+        return result;
     };
 
 public:
-    std::vector<double> data;
-
     std::unordered_map<std::string, double> variables;
 
 };
