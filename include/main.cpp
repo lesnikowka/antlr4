@@ -4,7 +4,7 @@
 //#include "mygrammarBaseVisitor.h"
 
 int main() {
-	std::string express = "a=1;bv=2.4;print:((a*bv*a)/(bv+a));";
+	std::string express = "print:3+2*4;";
 
 	std::stringstream stream(express);
 	antlr4::ANTLRInputStream input(stream);
@@ -14,7 +14,6 @@ int main() {
 	myVisitor visitor;
 
 	visitor.visit(parser.prog());
-
 
 	return 0;
 }

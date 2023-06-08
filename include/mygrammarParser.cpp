@@ -71,18 +71,18 @@ void mygrammarParserInitialize() {
   	46,8,3,1,3,1,3,1,3,3,3,51,8,3,5,3,53,8,3,10,3,12,3,56,9,3,1,3,0,2,2,6,
   	4,0,2,4,6,0,2,1,0,7,8,1,0,5,6,63,0,12,1,0,0,0,2,26,1,0,0,0,4,39,1,0,0,
   	0,6,42,1,0,0,0,8,13,5,1,0,0,9,10,5,1,0,0,10,11,5,3,0,0,11,13,5,1,0,0,
-  	12,8,1,0,0,0,12,9,1,0,0,0,13,1,1,0,0,0,14,15,6,1,-1,0,15,16,5,13,0,0,
-  	16,27,3,2,1,7,17,18,5,10,0,0,18,19,3,2,1,0,19,20,5,11,0,0,20,27,1,0,0,
-  	0,21,27,3,0,0,0,22,23,5,2,0,0,23,24,5,4,0,0,24,27,3,2,1,2,25,27,5,2,0,
-  	0,26,14,1,0,0,0,26,17,1,0,0,0,26,21,1,0,0,0,26,22,1,0,0,0,26,25,1,0,0,
-  	0,27,36,1,0,0,0,28,29,10,6,0,0,29,30,7,0,0,0,30,35,3,2,1,7,31,32,10,5,
-  	0,0,32,33,7,1,0,0,33,35,3,2,1,6,34,28,1,0,0,0,34,31,1,0,0,0,35,38,1,0,
-  	0,0,36,34,1,0,0,0,36,37,1,0,0,0,37,3,1,0,0,0,38,36,1,0,0,0,39,40,3,2,
-  	1,0,40,41,5,9,0,0,41,5,1,0,0,0,42,43,6,3,-1,0,43,45,3,4,2,0,44,46,5,0,
-  	0,1,45,44,1,0,0,0,45,46,1,0,0,0,46,54,1,0,0,0,47,48,10,1,0,0,48,50,3,
-  	4,2,0,49,51,5,0,0,1,50,49,1,0,0,0,50,51,1,0,0,0,51,53,1,0,0,0,52,47,1,
-  	0,0,0,53,56,1,0,0,0,54,52,1,0,0,0,54,55,1,0,0,0,55,7,1,0,0,0,56,54,1,
-  	0,0,0,7,12,26,34,36,45,50,54
+  	12,8,1,0,0,0,12,9,1,0,0,0,13,1,1,0,0,0,14,15,6,1,-1,0,15,16,5,10,0,0,
+  	16,17,3,2,1,0,17,18,5,11,0,0,18,27,1,0,0,0,19,27,3,0,0,0,20,21,5,2,0,
+  	0,21,22,5,4,0,0,22,27,3,2,1,3,23,27,5,2,0,0,24,25,5,13,0,0,25,27,3,2,
+  	1,1,26,14,1,0,0,0,26,19,1,0,0,0,26,20,1,0,0,0,26,23,1,0,0,0,26,24,1,0,
+  	0,0,27,36,1,0,0,0,28,29,10,7,0,0,29,30,7,0,0,0,30,35,3,2,1,8,31,32,10,
+  	6,0,0,32,33,7,1,0,0,33,35,3,2,1,7,34,28,1,0,0,0,34,31,1,0,0,0,35,38,1,
+  	0,0,0,36,34,1,0,0,0,36,37,1,0,0,0,37,3,1,0,0,0,38,36,1,0,0,0,39,40,3,
+  	2,1,0,40,41,5,9,0,0,41,5,1,0,0,0,42,43,6,3,-1,0,43,45,3,4,2,0,44,46,5,
+  	0,0,1,45,44,1,0,0,0,45,46,1,0,0,0,46,54,1,0,0,0,47,48,10,1,0,0,48,50,
+  	3,4,2,0,49,51,5,0,0,1,50,49,1,0,0,0,50,51,1,0,0,0,51,53,1,0,0,0,52,47,
+  	1,0,0,0,53,56,1,0,0,0,54,52,1,0,0,0,54,55,1,0,0,0,55,7,1,0,0,0,56,54,
+  	1,0,0,0,7,12,26,34,36,45,50,54
   };
   staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
 
@@ -517,58 +517,58 @@ mygrammarParser::ExprContext* mygrammarParser::expr(int precedence) {
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 1, _ctx)) {
     case 1: {
-      _localctx = _tracker.createInstance<Print_exprContext>(_localctx);
+      _localctx = _tracker.createInstance<LexprRContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
 
       setState(15);
-      match(mygrammarParser::PRINT);
-      setState(16);
-      expr(7);
-      break;
-    }
-
-    case 2: {
-      _localctx = _tracker.createInstance<LexprRContext>(_localctx);
-      _ctx = _localctx;
-      previousContext = _localctx;
-      setState(17);
       match(mygrammarParser::LBR);
-      setState(18);
+      setState(16);
       expr(0);
-      setState(19);
+      setState(17);
       match(mygrammarParser::RBR);
       break;
     }
 
-    case 3: {
+    case 2: {
       _localctx = _tracker.createInstance<EfloatContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(21);
+      setState(19);
       float_();
       break;
     }
 
-    case 4: {
+    case 3: {
       _localctx = _tracker.createInstance<VarISexprContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(22);
+      setState(20);
       match(mygrammarParser::VAR);
-      setState(23);
+      setState(21);
       match(mygrammarParser::IS);
-      setState(24);
-      expr(2);
+      setState(22);
+      expr(3);
+      break;
+    }
+
+    case 4: {
+      _localctx = _tracker.createInstance<EvarContext>(_localctx);
+      _ctx = _localctx;
+      previousContext = _localctx;
+      setState(23);
+      match(mygrammarParser::VAR);
       break;
     }
 
     case 5: {
-      _localctx = _tracker.createInstance<EvarContext>(_localctx);
+      _localctx = _tracker.createInstance<Print_exprContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
+      setState(24);
+      match(mygrammarParser::PRINT);
       setState(25);
-      match(mygrammarParser::VAR);
+      expr(1);
       break;
     }
 
@@ -593,7 +593,7 @@ mygrammarParser::ExprContext* mygrammarParser::expr(int precedence) {
           pushNewRecursionContext(newContext, startState, RuleExpr);
           setState(28);
 
-          if (!(precpred(_ctx, 6))) throw FailedPredicateException(this, "precpred(_ctx, 6)");
+          if (!(precpred(_ctx, 7))) throw FailedPredicateException(this, "precpred(_ctx, 7)");
           setState(29);
           _la = _input->LA(1);
           if (!(_la == mygrammarParser::DIV
@@ -606,7 +606,7 @@ mygrammarParser::ExprContext* mygrammarParser::expr(int precedence) {
             consume();
           }
           setState(30);
-          expr(7);
+          expr(8);
           break;
         }
 
@@ -616,7 +616,7 @@ mygrammarParser::ExprContext* mygrammarParser::expr(int precedence) {
           pushNewRecursionContext(newContext, startState, RuleExpr);
           setState(31);
 
-          if (!(precpred(_ctx, 5))) throw FailedPredicateException(this, "precpred(_ctx, 5)");
+          if (!(precpred(_ctx, 6))) throw FailedPredicateException(this, "precpred(_ctx, 6)");
           setState(32);
           _la = _input->LA(1);
           if (!(_la == mygrammarParser::SUB
@@ -629,7 +629,7 @@ mygrammarParser::ExprContext* mygrammarParser::expr(int precedence) {
             consume();
           }
           setState(33);
-          expr(6);
+          expr(7);
           break;
         }
 
@@ -902,8 +902,8 @@ bool mygrammarParser::sempred(RuleContext *context, size_t ruleIndex, size_t pre
 
 bool mygrammarParser::exprSempred(ExprContext *_localctx, size_t predicateIndex) {
   switch (predicateIndex) {
-    case 0: return precpred(_ctx, 6);
-    case 1: return precpred(_ctx, 5);
+    case 0: return precpred(_ctx, 7);
+    case 1: return precpred(_ctx, 6);
 
   default:
     break;
