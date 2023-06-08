@@ -74,12 +74,11 @@ class  myVisitor : public mygrammarVisitor {
         double left = std::any_cast<double>(visit(context->expr(0)));
         double right = std::any_cast<double>(visit(context->expr(1)));
 
-        if (right == 0) {
-            throw std::invalid_argument("Zero division error");
-        }
-
         if (context->MUL()) {
             return left * right;
+        }
+        else if (right == 0) {
+            throw std::invalid_argument("Zero division error");
         }
 
         return left / right;
