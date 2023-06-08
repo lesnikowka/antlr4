@@ -4,7 +4,8 @@
 //#include "mygrammarBaseVisitor.h"
 
 int main() {
-	std::string express = "print:((2*8)-(16/4));";
+	std::string express = "a=1;bv=2.4;print:((a*bv*a)/(bv+a));";
+
 	std::stringstream stream(express);
 	antlr4::ANTLRInputStream input(stream);
 	mygrammarLexer lexer(&input);
